@@ -18,22 +18,28 @@ class ViewController: UIViewController {
     }
     
     private func setupScreen() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.navigationItem.title = "Learn Swift Fundamentals"
         if let listD = loadList() {
             listData = listD
         }
     }
 }
 
-extension ViewController: UITableViewDataSource {
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         listData?.list.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath)
         cell.textLabel?.text = listData?.list[indexPath.row].title ?? ""
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "ProgramaticVC") as? ProgramaticVC else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
