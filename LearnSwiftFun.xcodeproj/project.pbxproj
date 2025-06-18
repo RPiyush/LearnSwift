@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		DCFC44572E026D5700E00B90 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DCFC44562E026D5700E00B90 /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		DCFC44142E00117A00E00B90 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		DCFC43FD2E00117800E00B90 /* LearnSwiftFun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearnSwiftFun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCFC44132E00117A00E00B90 /* LearnSwiftFunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearnSwiftFunTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCFC441D2E00117A00E00B90 /* LearnSwiftFunUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearnSwiftFunUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCFC44562E026D5700E00B90 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -88,6 +93,7 @@
 		DCFC43F42E00117800E00B90 = {
 			isa = PBXGroup;
 			children = (
+				DCFC44562E026D5700E00B90 /* README.md */,
 				DCFC43FF2E00117800E00B90 /* LearnSwiftFun */,
 				DCFC44162E00117A00E00B90 /* LearnSwiftFunTests */,
 				DCFC44202E00117A00E00B90 /* LearnSwiftFunUITests */,
@@ -225,6 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCFC44572E026D5700E00B90 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
