@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -37,9 +38,14 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "ProgramaticVC") as? ProgramaticVC else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
+        guard let title = listData?.list[indexPath.row].title else { return }
+        
+        switch title {
+            case TableValues.swiftUI.rawValue:
+                navigateToSwiftUI()
+            default:
+                navigateToProgramaticVC()
+        }
     }
 }
 
@@ -52,6 +58,18 @@ extension ViewController {
         }
         return mainList
     }
+    
+    fileprivate func navigateToProgramaticVC() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "ProgramaticVC") as? ProgramaticVC else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    fileprivate func navigateToSwiftUI() {
+        let swiftUIView = SwiftUIView()
+        let hostingController = UIHostingController(rootView: swiftUIView)
+        self.navigationController?.pushViewController(hostingController, animated: true)
+    }
 }
 
 struct MainList: Codable {
@@ -60,4 +78,10 @@ struct MainList: Codable {
 
 struct ListItem: Codable {
     let title: String
+}
+
+enum TableValues: String {
+    case storyboard = "UI With StroryBoard"
+    case programmatic = "Programmatic UI"
+    case swiftUI = "Swift UI"
 }
