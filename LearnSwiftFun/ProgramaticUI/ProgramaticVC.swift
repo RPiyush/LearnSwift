@@ -10,7 +10,9 @@ import UIKit
 class ProgramaticVC: UIViewController {
     var cluesLabel: UILabel!
     var answersLabel: UILabel!
-    var currentAnswer: UITextField!
+    var userName: UITextField!
+    var password: UITextField!
+
     var scoreLabel: UILabel!
     var letterButtons = [UIButton]()
 
@@ -46,7 +48,7 @@ class ProgramaticVC: UIViewController {
         centerView.layer.shouldRasterize = true
         centerView.layer.rasterizationScale = UIScreen.main.scale
 
-        let userName = UITextField()
+        userName = UITextField()
         userName.placeholder = "Username"
         userName.font = UIFont.systemFont(ofSize: 17.0)
         userName.translatesAutoresizingMaskIntoConstraints = false
@@ -54,7 +56,7 @@ class ProgramaticVC: UIViewController {
         userName.setLeftPaddingPoints(10)
         centerView.addSubview(userName)
         
-        let password = UITextField()
+        password = UITextField()
         password.placeholder = "Password"
         password.isSecureTextEntry = true
         password.font = UIFont.systemFont(ofSize: 17.0)
@@ -67,6 +69,7 @@ class ProgramaticVC: UIViewController {
         login.setTitle("LOGIN", for: .normal)
         login.translatesAutoresizingMaskIntoConstraints = false
         login.backgroundColor = .blue
+        login.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
         centerView.addSubview(login)
         self.view.addSubview(centerView)
         
@@ -103,6 +106,20 @@ class ProgramaticVC: UIViewController {
         ])
 //        centerView.setContentHuggingPriority(.defaultHigh, for: .vertical)
 //        imageView.setContentHuggingPriority(.defaultLow, for: .vertical)
+    }
+    
+   @objc func loginButtonAction() {
+        if userName.text?.isEmpty ?? false {
+            showAlert(message: "Username is required")
+        } else if password.text?.isEmpty ?? false {
+            showAlert(message: "Password is required")
+        }
+    }
+    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+       alert.addAction(UIAlertAction(title: "OK", style: .default))
+       present(alert, animated: true)
     }
 }
 

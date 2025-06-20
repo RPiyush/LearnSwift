@@ -11,6 +11,9 @@ struct SwiftUIView: View {
     @State private var username: String = ""
     @State private var password: String = ""
     
+    @State private var showAlert = false
+    @State private var alertMessage = ""
+    
     var body: some View {
         VStack(spacing: 20) {
             Image("logo")
@@ -35,15 +38,19 @@ struct SwiftUIView: View {
                     .padding()
                     .background(Color.white)
                     .cornerRadius(4)
-
+                
                 Button(action: {
                     // handle login
+                    checkInput()
                 }) {
                     Text("LOGIN")
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                         .padding()
                         .background(.blue)
+                }
+                .alert(alertMessage, isPresented: $showAlert) {
+                    Button("OK", role: .cancel) { }
                 }
             }
             .padding()
@@ -57,6 +64,16 @@ struct SwiftUIView: View {
             .shadow(radius: 5)
         }
         .padding()
+    }
+    
+    func checkInput() {
+        if username.isEmpty {
+            showAlert = true
+            alertMessage = "Username is required"
+        } else if password.isEmpty {
+            showAlert = true
+            alertMessage = "Password is required"
+        }
     }
 }
 
