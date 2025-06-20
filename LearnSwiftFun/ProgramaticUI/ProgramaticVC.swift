@@ -30,7 +30,7 @@ class ProgramaticVC: UIViewController {
         self.view.addSubview(heading)
         
         let imageView = UIImageView()
-        imageView.image = #imageLiteral(resourceName: "Logo.png")
+        imageView.image = #imageLiteral(resourceName: "logo")
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(imageView)
@@ -73,7 +73,7 @@ class ProgramaticVC: UIViewController {
         NSLayoutConstraint.activate([
             centerView.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
             centerView.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor),
-            centerView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 1.0),
+            centerView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.9),
             centerView.heightAnchor.constraint(equalToConstant: 200),
             
             heading.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
