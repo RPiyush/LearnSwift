@@ -66,7 +66,7 @@ extension ViewController {
     }
     
     fileprivate func navigateToSwiftUI() {
-        let swiftUIView = SwiftUIView()
+        let swiftUIView = DashboardView()
         let hostingController = UIHostingController(rootView: swiftUIView)
         self.navigationController?.pushViewController(hostingController, animated: true)
     }
