@@ -18,6 +18,16 @@ class ViewController: UIViewController {
         setupScreen()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        self.navigationController?.navigationItem.hidesBackButton = true
+    }
+    
     private func setupScreen() {
         self.navigationItem.title = "Learn Swift Fundamentals"
         if let listD = loadList() {
@@ -66,7 +76,7 @@ extension ViewController {
     }
     
     fileprivate func navigateToSwiftUI() {
-        let swiftUIView = DashboardView()
+        let swiftUIView = SwiftUIView()
         let hostingController = UIHostingController(rootView: swiftUIView)
         self.navigationController?.pushViewController(hostingController, animated: true)
     }

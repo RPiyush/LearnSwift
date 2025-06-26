@@ -11,6 +11,7 @@ struct DashboardView: View {
     let items = ["Apple", "Banana", "Orange", "Grapes x"]
 
     @State private var selectedItem: String? = nil
+    @State private var navigate = false
     @State private var showAlert = false
     
     var body: some View {
@@ -33,26 +34,30 @@ struct DashboardView: View {
                     }
             VStack {
                 List(items, id: \.self) { item in
-                    NavigationLink(destination: clickedButtonAction(item: item)) {
-                        HStack {
-                            Text(item)
-                                .padding(.leading, 10)
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                                .foregroundColor(.gray)
+                    HStack {
+                        Text(item)
+                            .padding(.leading, 10)
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(.gray)
+                            .padding(.trailing, 20)
+                    }
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        selectedItem = item
+                        if item == "Apple" {
+                            navigate = true
                         }
                     }
-                    .simultaneousGesture(TapGesture().onEnded({
-                        if item != "Apple" {
-                            showAlert = true
-                            selectedItem = item
-                        }
-                    }))
                     .alert("No view defined for \(selectedItem ?? "")", isPresented: $showAlert) {
                         Button("OK", role: .cancel) {}
                     }
+                    .navigationDestination(isPresented: $navigate) {
+                       if let item = selectedItem {
+                           clickedButtonAction(item: item)
+                       }
+                    }
                 }
-                .navigationTitle("Fruits")
                 .frame(height: UIScreen.main.bounds.height / 2 + 100)
                 .padding(.top, 250)
 
@@ -66,7 +71,9 @@ struct DashboardView: View {
                         .padding(.top, -180)
                         .padding(.leading, UIScreen.main.bounds.width - 100)
                 }
-            }.background(.cyan)
+            }
+            .background(.cyan)
+            .navigationBarBackButtonHidden(true)
         }
     }
     
