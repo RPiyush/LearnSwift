@@ -13,75 +13,94 @@ struct DashboardView: View {
     @State private var selectedItem: String? = nil
     @State private var navigate = false
     @State private var showAlert = false
-    
-    var body: some View {
-        ZStack{
-            Image("dashbackground").resizable()
-                .scaledToFill()
-                .ignoresSafeArea()
-                .padding(.top, -80)
-            VStack {
-                        Image("logo")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 80)
-                            .padding(.top, 20)
-                            .padding(.leading, -180)
-                    Text("Learn Swift")
-                    .padding(.leading, -180)
-                Spacer()
 
-                    }
-            VStack {
-                List(items, id: \.self) { item in
-                    HStack {
-                        Text(item)
-                            .padding(.leading, 10)
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .foregroundColor(.gray)
-                            .padding(.trailing, 20)
-                    }
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        selectedItem = item
-                        if item == "Apple" {
-                            navigate = true
+    var body: some View {
+        NavigationStack {
+            GeometryReader { geo in
+                ZStack(alignment: .top) {
+                    Image("dashbackground")
+                        .resizable()
+                        .scaledToFill()
+                        .ignoresSafeArea()
+                        .padding(.top, 0)
+                    
+                    VStack(alignment: .leading, spacing: 0) {
+                        
+                        // Top View
+                        HStack(alignment: .top) {
+                            VStack(spacing: 8) {
+                                Image("logo")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: geo.size.width * 0.16, height: geo.size.width * 0.16)
+                                
+                                Text("Learn Swift")
+                                    .font(.headline)
+                                    .fontWeight(.bold)
+                                
+                                Text("")
+                                    .frame(maxHeight: .infinity)
+                            }
+                            .frame(height: 210)
+                            .frame(maxWidth: .infinity)
+                            Text("")
+                                .frame(maxWidth: .infinity)
+                            Text("")
+                                .frame(maxWidth: .infinity)
+                        }
+                        .frame(height: geo.size.width * 0.5)
+                        
+                        VStack {
+                            List(items, id: \.self) { item in
+                                HStack {
+                                    Text(item)
+                                        .padding(.leading, 0)
+                                    Spacer()
+                                    Image(systemName: "chevron.right")
+                                        .foregroundColor(.gray)
+                                        .padding()
+                                }
+                                
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    selectedItem = item
+                                    if item == "Apple" {
+                                        navigate = true
+                                    } else {
+                                        showAlert = true
+                                    }
+                                }
+                            }
+                            .frame(maxWidth: geo.size.width)
                         }
                     }
-                    .alert("No view defined for \(selectedItem ?? "")", isPresented: $showAlert) {
-                        Button("OK", role: .cancel) {}
+                    
+                    // Floating Button
+                    HStack() {
+                        Spacer()
+                        Button(action: { }) {
+                            Image(systemName: "plus")
+                                .foregroundColor(.white)
+                                .padding()
+                                .background(Circle().fill(.red))
+                        }
                     }
-                    .navigationDestination(isPresented: $navigate) {
-                       if let item = selectedItem {
-                           clickedButtonAction(item: item)
-                       }
-                    }
-                }
-                .frame(height: UIScreen.main.bounds.height / 2 + 100)
-                .padding(.top, 250)
+                    .frame(maxWidth: geo.size.width)
+                    .frame(maxHeight: geo.size.height / 2)
 
-            }
-            HStack{
-                Button(action: {}) {
-                    Image(systemName: "plus")
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Circle().fill(Color.red))
-                        .padding(.top, -180)
-                        .padding(.leading, UIScreen.main.bounds.width - 100)
                 }
+
+                .navigationDestination(isPresented: $navigate) {
+                    SwiftUIView()
+                }
+                
+                .alert("No view defined for \(selectedItem ?? "")", isPresented: $showAlert) {
+                    Button("OK", role: .cancel) { }
+                }
+                
+                .navigationBarBackButtonHidden(true)
+                
             }
-            .background(.cyan)
-            .navigationBarBackButtonHidden(true)
-        }
-    }
-    
-    private func clickedButtonAction(item: String) -> some View {
-        if item == "Apple" {
-            return AnyView(SwiftUIView())
-        } else {
-            return AnyView(EmptyView())
         }
     }
 }
