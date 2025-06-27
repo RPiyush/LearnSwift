@@ -78,9 +78,9 @@ struct DashboardView: View {
                                 .background(Circle().fill(.red))
                         }
                     }
-                    .padding(.horizontal)
-                    .padding(.top, geo.safeAreaInsets.top + 125)
-                    .padding(.trailing, 60)
+                    .frame(maxWidth: geo.size.width)
+                    .frame(maxHeight: geo.size.height * 0.55)
+                    .padding(.trailing, 50)
                 }
 
                 .navigationDestination(isPresented: $navigate) {
