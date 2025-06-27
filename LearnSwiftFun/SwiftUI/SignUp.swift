@@ -66,7 +66,7 @@ struct SignUp: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .ignoresSafeArea()
             }
-            .navigationTitle("Sign Up")
+            .navigationTitle("Sign Up Page")
         }
     }
 }
