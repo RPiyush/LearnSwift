@@ -38,41 +38,34 @@ struct DashboardView: View {
                                     .font(.headline)
                                     .fontWeight(.bold)
                                 
-                                Text("")
-                                    .frame(maxHeight: .infinity)
+                                Spacer()
                             }
-                            .frame(height: 210)
-                            .frame(maxWidth: .infinity)
-                            Text("")
-                                .frame(maxWidth: .infinity)
-                            Text("")
-                                .frame(maxWidth: .infinity)
+                            .padding()
+                            .frame(maxWidth: .infinity, alignment: .leading)
                         }
                         .frame(height: geo.size.width * 0.5)
                         
-                        VStack {
-                            List(items, id: \.self) { item in
-                                HStack {
-                                    Text(item)
-                                        .padding(.leading, 0)
-                                    Spacer()
-                                    Image(systemName: "chevron.right")
-                                        .foregroundColor(.gray)
-                                        .padding()
-                                }
-                                
-                                .contentShape(Rectangle())
-                                .onTapGesture {
-                                    selectedItem = item
-                                    if item == "Apple" {
-                                        navigate = true
-                                    } else {
-                                        showAlert = true
-                                    }
+                        List(items, id: \.self) { item in
+                            HStack {
+                                Text(item)
+                                    .padding(.leading, 0)
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.gray)
+                                    .padding()
+                            }
+                            
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                selectedItem = item
+                                if item == "Apple" {
+                                    navigate = true
+                                } else {
+                                    showAlert = true
                                 }
                             }
-                            .frame(maxWidth: geo.size.width)
                         }
+                        .frame(maxWidth: geo.size.width)
                     }
                     
                     // Floating Button
@@ -85,9 +78,9 @@ struct DashboardView: View {
                                 .background(Circle().fill(.red))
                         }
                     }
-                    .frame(maxWidth: geo.size.width)
-                    .frame(maxHeight: geo.size.height / 2)
-
+                    .padding(.horizontal)
+                    .padding(.top, geo.safeAreaInsets.top + 125)
+                    .padding(.trailing, 60)
                 }
 
                 .navigationDestination(isPresented: $navigate) {
@@ -99,7 +92,6 @@ struct DashboardView: View {
                 }
                 
                 .navigationBarBackButtonHidden(true)
-                
             }
         }
     }
