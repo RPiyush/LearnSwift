@@ -1,0 +1,21 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "title": "Tech Conference 2025",
+      "description": "Annual AI, Cloud & Web3 Summit",
+      "date": "2025-09-20T10:00:00Z",
+      "location": "Bangalore, India",
+      "imageUrl": "https://picsum.photos/400/200?random=1"
+    },
+    {
+      "id": 2,
+      "title": "Startup Pitch Night",
+      "description": "Local startups pitch to investors",
+      "date": "2025-09-25T18:30:00Z",
+      "location": "Pune, India",
+      "imageUrl": "https://picsum.photos/400/200?random=2"
+    }
+  ]
+}
+
