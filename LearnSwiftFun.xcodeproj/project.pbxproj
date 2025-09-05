@@ -28,7 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DC0660AF2E6B4F7F001A2AE2 /* event.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = event.json; sourceTree = "<group>"; };
+		DC0660AF2E6B4F7F001A2AE2 /* db.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = db.json; sourceTree = "<group>"; };
 		DCFC43FD2E00117800E00B90 /* LearnSwiftFun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearnSwiftFun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCFC44132E00117A00E00B90 /* LearnSwiftFunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearnSwiftFunTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCFC441D2E00117A00E00B90 /* LearnSwiftFunUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearnSwiftFunUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,7 +94,7 @@
 		DC0660AE2E6B4F73001A2AE2 /* json */ = {
 			isa = PBXGroup;
 			children = (
-				DC0660AF2E6B4F7F001A2AE2 /* event.json */,
+				DC0660AF2E6B4F7F001A2AE2 /* db.json */,
 			);
 			path = json;
 			sourceTree = "<group>";
